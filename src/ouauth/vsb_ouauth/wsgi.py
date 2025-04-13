@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'nmap.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'vsb_ouauth.settings')
 
 application = get_wsgi_application()
