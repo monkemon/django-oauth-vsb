@@ -1,0 +1,121 @@
+{% extends "../base/base.html" %}
+{% load static %}
+
+{% block title %} NMAP - Ostatní nástroje {% endblock %}
+
+
+
+
+{% block content %}
+
+
+
+<div class="container pt-5">
+    <h1 class="pt-5">Porovnání NMAP s ostatními nástroji</h1>
+    <p class="lead">Další nastroj podobný NMAP jsou například: Zenmap, Wireshark,  Unicornscan, <b>Nesssus</b>, Netcat </p>
+  </div>
+
+
+        <section class="aboutSection bg-light">
+            <div class="container px-6 w-100">
+                <div class="row gx-4 justify-content-center w-100">
+                    <div class="col-md-8 w-100">
+                        <h2>Základní vlastnosti nástroje Nmap</h2>
+                        <p>Na rozdíl od jiných jednoduchých skenerů portů, které pouze odesílají pakety 
+                            v určité předdefinované časové periodě, Nmap počítá s různými stavy počítačové
+                            sítě (kolísání latence, zahlcením sítě, interference s cílovým strojem) 
+                            během skenování. Díky obrovské komunitě uživatelů a přispěvatelů se Nmap stal více než jenom 
+                            skenerem, který je schopen zjistit, zda je hostitelský počítač online či offline, a který zjistí, 
+                            jaké porty jsou otevřené a jaké zavřené. Nmap je schopen odhalit operační systém cílového počítače, 
+                            jména a verze služeb naslouchajících na portech, jak dlouho je cílový systém online, typy zařízení 
+                            nebo přítomnost firewallu případně jeho pravidla. Nmap byl původně vyvinut pro skenování velkých sítí a
+                            proto zvláště v tomto segmentu vyniká nad ostatními skenery.
+                            Nmap je dostupný pro operační systémy Linux, Solaris, HP-UX, BSD, Windows, Mac OS X, SGI IRIX a AmigaOS. 
+                            První verze byla vydána, spolu se zdrojovým kódem v září 1997 v magazínu Phrack. </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="">
+            <div class="container px-6 w-100">
+                <div class="row gx-4 justify-content-center w-100">
+                    <div class="col-md-8 w-100">
+                        <h2>Nessus</h2>
+                        <p>Jedná se o open source software vydaný společnosti Tenable v roce 1998. Na rozdíl od Nmapu se Nessus soustředí na detekci <b>zranitelností</b> v zařízeních, aplikacích, operačních systémech a na síti. 
+                            Oproti jiným nástrojům poskytuje i doporučení pro odstranění zranitelnost. Také, oproti samotnému Nmapu,
+                            poskytuje i webové rozhraní pro správu a výkon jednotlivých testů. Nessus je znám pro širokou databázi pluginů. Dále umožňuje provést kontrolu 
+                            jednlotivých skenů i offline pomocí například nově přidaných pluginů, což eliminuje nutnost skeny provádět opakovaně.
+                             Také umožňuje skeny exportovat do několika formátů (XML, HTML, CSV).  </p>
+                    </div>
+                    <figure class="figure col-md-9">
+                    <img src="{% static 'images/nessus_scan.png' %}" style="width:100%;">
+                    <figcaption class="figure-caption">Snímek výsledku skenu v rozhraní Nessusu s odhalením zranitelnosti.</figcaption>
+                    </figure>
+                    <figure class="figure col-md-9">
+                        <img src="{% static 'images/nessus_scan2.png' %}" style="width:100%;">
+                        <figcaption class="figure-caption">Snímek výsledku skenu v rozhraní Nessusu s odhalením zranitelnosti.</figcaption>
+                        </figure>
+                </div>
+            </div>
+        </section>
+        <section class="aboutSection bg-light">
+            <div class="container px-6 w-100">
+                <div class="row gx-4 justify-content-center w-100">
+                    <div class="col-md-8 w-100">
+                        <h2>Zenmap</h2>
+                        <p>Jedná se o oficiální GUI rozšíření nástroje Nmap. Využívá prakticky stejného přístupu, tedy dá se počítat i se stejnými funkcionalitami,
+                            ale přináší navíc grafické rozhraní. Mimo uživatelský přívětivější zadávání nmap příkazů přináší i možnost skeny uložit a prohlédnout si je později. 
+                            Dále je možné vytvoření tzv. profilů pro často opakované skeny. 
+                        </p>
+                    </div>
+                    <figure class="figure col-md-6">
+                        <img src="{% static 'images/zenmap2.png' %}" style="width:100%;">
+                        <figcaption class="figure-caption">Grafická reprezentace topologie sítě v Zenmapu.</figcaption>
+                        </figure>
+                    <figure class="figure col-md-6">
+                        <img src="{% static 'images/zenmap.png' %}" style="width:100%;">
+                        <figcaption class="figure-caption">GUI aplikace Zenmap.</figcaption>
+                        </figure>
+
+                </div>
+            </div>
+        </section>
+        <section class="aboutSection">
+            <div class="container px-6 w-100">
+                <div class="row gx-4 justify-content-center w-100">
+                    <div class="col-md-8 w-100">
+                        <h2>Netcat</h2>
+                        <p> Jedná se o nástroj, kterým je v dnešní době vybavena většina Linuxových distribucí. Nástroj slouží pro práci s TCP či UDP komunikací. 
+                            Kromě klasického skenování portů umožňuje také přenos souborů, vytvoření serveru, či spuštění příkazu na vzdáleném zařízení.
+                            Původně byl Netcat vyvíjen pouze pro Unixové operační systémy, ale v dnešní době jsou dostupné i porty pro Windows. 
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <section class="aboutSection bg-light">
+            <div class="container px-6 w-100">
+                <div class="row gx-4 justify-content-center w-100">
+                    <div class="col-md-8 w-100">
+                        <h2>Unicornscan</h2>
+                        <p> Tento nástroj je optimalizován pro rychlé skenování portů a nalezení IP adres jednotlivých uzlů na síti. 
+                            Opět jako u ostatních nástrojů je také open-source. Unicornscan se do značné míry podobá Nmapu včetně absence GUI. Avšak na základě 
+                            nekolika provedených porovnání je Unicornscan jednoznačně rychlejší ve skenování než-li Nmap. Naopak Nmap je schopný objevit více otevřených portů.
+                            Další nevýhodou tohoto nástroje je, že není aktivně udržován.
+                        </p>
+                    </div>
+                    <figure class="figure col-md-6">
+                        <img src="{% static 'images/oriunicorn1.jpg' %}" style="width:100%;">
+                        <figcaption class="figure-caption">Sken pomocí nástroje Unicorn.</figcaption>
+                        </figure>
+                        <figure class="figure col-md-6">
+                            <img src="{% static 'images/orinmap1.jpg' %}" style="width:100%;">
+                            <figcaption class="figure-caption">Sken stejné sítě pomocí nástroje NMAP.</figcaption>
+                            </figure>
+
+                </div>
+            </div>
+        </section>
+
+{% endblock %}

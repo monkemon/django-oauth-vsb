@@ -1,0 +1,107 @@
+{% extends "../base/base.html" %}
+
+
+{% block title %} NMAP - Home {% endblock %}
+
+{% block content %}
+
+        <!-- Header-->
+        <header class="bg-primary bg-gradient text-white">
+            <div class="container px-4 text-center">
+                <h1 class="fw-bolder">Nástroj pro skenování portů - Nmap</h1>
+                <p >Tento web se zabývá nástrojem Nmap v rámci projektu do školního předmětu "Kybernetická Bezpečnost"</p>
+                <a class="btn btn-lg btn-light" href="#about">Co je to Nmap?</a>
+            </div>
+        </header>
+        <!-- About section-->
+        <section class="" id="about">
+            <div class="container px-6 w-100">
+                <div class="row gx-4 justify-content-center w-100">
+                    <div class="col-md-8 w-100">
+                        <h2>Popis</h2>
+                        <p>Nmap, neboli <b>Network MAPer</b>, je bezpečnostní skener portů vyvinutý <b>Gordonem Lyonem</b>. 
+                            Primárně se tento nástroj používá k hledání hostitelských počítačů a služeb na počítačové síti, čili k vytvoření 
+                            pomyslné "mapy" sítě. Aby Nmap mohl vykonávat tyto úkoly, odesílá na cílový počítač speciálně upravené pakety a 
+                            poté analyzuje odpovědi.</p>
+                            <br>
+                        <h4>Nmap umožňuje:</h4>
+                        <ul>
+                            <li>Zjištění otevřených portů na jednom nebo více počítačích.</li>
+                            <li>Identifikování služby běžící na těchto portech.</li>
+                            <li>Zjištění typu operačního systému běžícího na daném počítači (OS fingerprinting).</li>
+                            <li>Pomocí NSE (Nmap Scripting Engine), který byl představen ve verzi 4.50, je možné interaktivně komunikovat s cílovým systémem.</li>
+                        </ul>
+                    </div>
+                </div>
+                <h4>Využití:</h4>
+                <ul>
+                    <li>Audit služeb a systémů v počítačových sítích.</li>
+                    <li>Správa sítě a síťových zdrojů.</li>
+                    <li>Nástroj pro bezpečnostní audity a penetrační testování.</li>
+                    <li>Mapování sítí od malých až po korporátní rozlehlé sítě</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="bg-light" id="about">
+            <div class="container px-6 w-100">
+                <div class="row gx-4 justify-content-center w-100">
+                    <div class="col-md-8 w-100">
+                        <h2>Historie</h2>
+                        <p>
+                            <ul>
+                                <li><strong>1. září 1997</strong> — Nmap je poprvé vydán v časopise Phrack, číslo 51, článek 11. Nemá verzi, protože nové verze nejsou plánovány. Nmap má asi 2 000 řádků kódu a kompilace je jednoduchá příkazem <code>gcc -O6 -o nmap nmap.c -lm</code>.</li>
+                                <li><strong>5. září 1997</strong> — Na základě vysoké poptávky je vydána mírně vylepšená verze Phrack kódu, označena jako verze 1.25. Komprimovaný tarball má 28KB. Verze 1.26 (48KB) je vydána o 19 dní později.</li>
+                                <li><strong>11. ledna 1998</strong> — Registrace domény Insecure.Org a přemístění Nmapu z předchozího hostingu DataHaven Project ISP.</li>
+                                <li><strong>14. března 1998</strong> — Renaud Deraison píše a informuje, že píše bezpečnostní skener a ptá se, zda může použít část Nmap kódu. Samozřejmě souhlasím. O devět dní později mi posílá předběžnou verzi Nessus, která je určena pro správce systému, ne pro "3l33t H4ck3rZ".</li>
+                                <li><strong>12. prosince 1998</strong> — Verze 2.00 Nmap je veřejně vydána, poprvé zavádí detekci operačního systému Nmapu po několikaměsíčním soukromém vývoji. Byla vydána studie popisující tuto techniku v Phracku 54, článek 9. V této době je Nmap rozdělena do mnoha souborů, má přibližně 8 000 řádků kódu, je uložena v soukromém systému verzí CVS a její velikost tarballu je 275KB. Je spuštěn mailing list nmap-hackers, který později roste na více než 80 000 členů.</li>
+                                <li><strong>11. dubna 1999</strong> — Nmap 2.11BETA1 je vydán. Jedná se o první verzi, která obsahuje grafické uživatelské rozhraní jako alternativu k tradičnímu příkazovému řádku. Součástí balíčku je pouze Unixová GUI NmapFE, kterou původně napsal Zach Smith. Někteří ji mají rádi, ale většina preferuje příkazový řádek.</li>
+                                <li><strong>28. dubna 2000</strong> — Nmap 2.50 je vydán. Velikost tarballu vzrostla na 461KB. Tato verze obsahuje časové režimy jako -T agresivní, přímé skenování SunRPC, a metody skenování Window a ACK.</li>
+                                <li><strong>28. května 2000</strong> — Gerhard Rieger posílá zprávu na nmap-dev list, popisující nový “protokolový skener”, který vyvinul pro Nmap, a dokonce přikládá patch. Tento nový skener je tak skvělý, že vydávám Nmap 2.54BETA1 s jeho patchem do 12 hodin.</li>
+                                <li><strong>7. prosince 2000</strong> — Nmap 2.54BETA16 je vydán jako první oficiální verze, která se může kompilovat a běžet na Microsoft Windows. Práce na portování pro Windows byla provedena Ryanem Permehem a Andym Lutomirskim.</li>
+                                <li><strong>9. července 2001</strong> — IP ID idle skenování Nmapu je zavedené s verzí 2.54BETA26. O této technice byl současně vydán článek.</li>
+                                <li><strong>25. července 2002</strong> — Opustil jsem práci u Netscape/AOL a začal jsem svou vysněnou práci na Nmapu na plný úvazek.</li>
+                                <li><strong>31. července 2002</strong> — Nmap 3.00 je vydán. Velikost tarballu je 922K. Tato verze zahrnuje podporu pro Mac OS X, XML výstup a detekci doby provozu.</li>
+                                <li><strong>31. července 2002</strong> — Nmap 3.00 je vydán. Velikost tarballu je 922K. Tato verze zahrnuje podporu pro Mac OS X, XML výstup a detekci doby provozu.</li>
+                                <li><strong>28. srpna 2002</strong> — Nmap je převeden z jazyka C na C++ a přidána podpora pro IPv6 v rámci verze 3.10ALPHA1.</li>
+                                <li><strong>15. května 2003</strong> — Nmap je uveden ve filmu Matrix Reloaded, kde Trinity používá Nmap (následovaný skutečnou zranitelností SSH) k hacknutí elektrárny a záchraně světa. To přináší větší publicitu pro Nmap, než jakou měl kdy dříve. Hollywood si ho všimne a Nmap se stává standardním rekvizitou pro hackerské scény ve filmech. Nmap je později viděn ve filmech jako Bourneův mýtus, Smrtonosná past 4, Dívka s dragoní tetováním, Dredd a mnoho dalších. Podrobnosti a screenshoty z těchto filmů jsou dostupné na https://nmap.org/movies/.</li>
+                                <li><strong>21. července 2003</strong> — Dokončuji první implementaci detekce služeb a verzí Nmapu (Kapitola 7, Detekce verzí služeb a aplikací) a vydávám ji několika desítkám hlavních vývojářů a uživatelů Nmapu jako Nmap 3.40PVT1. Následuje 16 dalších soukromých vydání v následujících měsících, jak vylepšujeme systém a přidáváme podpisy.</li>
+                                <li><strong>16. září 2003</strong> — Detekce služeb Nmap je veřejně vydána v rámci verze Nmap 3.45.</li>
+                                <li><strong>20. února 2004</strong> — Nmap 3.50 je vydán. Velikost tarballu je nyní 1 571KB. Společnost SCO je zakázána z redistribuce Nmapu, protože odmítají dodržovat GPL. Musí přestavět své Caldera release ISOs, aby odstranili Nmap. Tato verze zahrnuje možnosti sledování paketů a UDP ping, stejně jako systém klasifikace operačních systémů.</li>
+                                <li><strong>31. srpna 2004</strong> — Hlavní motor pro skenování portů Nmap je přepsán pro Nmap 3.70. Nový motor, nazvaný ultra_scan, obsahuje dramaticky vylepšené algoritmy a podporu paralelizace pro zlepšení přesnosti a rychlosti. Rozdíly jsou obzvláště dramatické pro hostitele za přísnými firewally.</li>
+                                <li><strong>25. června 2005</strong> — Google sponzoruje 10 studentů vysokých škol a absolventů, kteří pracují na Nmapu na plný úvazek během léta v rámci programu Google Summer of Code. Projekty zahrnují moderní implementaci Netcat nazvanou Ncat (Chris Gibson), druhou generaci systému detekce operačních systémů (Zhao Lei), nový multiplatformní GUI, který se později stává Zenmap (Adriano Monteiro Marques) a další skvělé projekty popsané na https://seclists.org/nmap-hackers/2005/8.</li>
+                                <li><strong>8. září 2005</strong> — Nmap získává podporu pro odesílání syrových ethernetových rámců s vydáním verze 3.90. To umožňuje ARP skenování (viz sekce "ARP Scan (-PR)") a spoofování MAC adres, stejně jako obcházení blokování syrových IP paketů, které bylo zavedeno v systému Windows XP SP2.</li>
+                                <li><strong>31. ledna 2006</strong> — Nmap 4.00 je vydán. Velikost tarballu je nyní 2 388KB. Tato verze zahrnuje interaktivní funkce pro odhadování doby dokončení v reálném čase, instalační program pro Windows, aktualizace NmapFE pro podporu GTK2 a mnohem více.</li>
+                                <li><strong>24. května 2006</strong> — Google sponzoruje dalších 10 letních vývojářů Nmapu v rámci programu SoC. Zhao a Adriano se vrací jako součást SoC 2006, aby dále rozvinuli své projekty. Diman Todorov je sponzorován, aby pomohl vyvinout Nmap Scripting Engine (Kapitola 9, Nmap Scripting Engine). Tyto a dalších sedm talentovaných studentů a jejich projekty jsou popsány na https://seclists.org/nmap-hackers/2006/9.</li>
+                                <li><strong>24. června 2006</strong> — Po dvou letech vývoje a testování je do Nmap 4.20ALPHA1 integrován druhý systém detekce operačních systémů. Tento nový systém je založen na všem, co jsme se naučili, a nových nápadech, které jsme vymysleli od doby, kdy první generace debutovala před osmi lety. Nový systém je mnohem přesnější a podrobnější než první generace, i když nám trvalo 2,5 roku, než jsme dosáhli velikosti staré databáze.</li>
+                                <li><strong>10. prosince 2006</strong> — Nmap Scripting Engine je vydán jako součást Nmap 4.21ALPHA1. NSE umožňuje uživatelům psát (a sdílet) jednoduché skripty pro automatizaci různých síťových úkolů. Tato počáteční verze obsahuje 23 skriptů pro jednoduché úkoly, jako je detekce nebezpečných protokolů SSHv1 a SSLv2, získání informací o vlastníkovi služby z identd a testování, zda DNS servery podporují rekurzivní dotazy.</li>
+                                <li><strong>20. prosince 2006</strong> — Otevření veřejného Subversion repozitáře zdrojového kódu Nmapu. Do této doby měl k repozitáři přístup pouze hrstka vývojářů. Ostatní museli čekat na vydání. Nyní může každý sledovat vývoj Nmapu každý den. Nový mailing list nmap-svn poskytuje e-mailová oznámení o změnách v reálném čase.</li>
+                                <li><strong>28. května 2007</strong> — Google sponzoruje šest letních vývojářů Nmap v rámci programu SoC. Mezi sponzorovanými studenty byl David Fifield, který pokračoval i po skončení léta a stal se spoluhlavním správcem Nmap. Významně přispěl k produkci této knihy! Seznam studentů a jejich projektů je dostupný na <a href="https://seclists.org/nmap-hackers/2007/3">seclists.org</a>.</li>
+                                <li><strong>8. července 2007</strong> — Grafické rozhraní Zenmap (tehdy nazývané Umit) je vylepšeno a integrováno do verze Nmap 4.22SOC1 pro testování. Starý GUI NmapFE je odstraněn. Zenmap je popsán v kapitole 12, Uživatelská příručka pro Zenmap GUI.</li>
+                                <li><strong>13. prosince 2007</strong> — Vydání Nmap 4.50 k oslavě 10. výročí Nmap!</li>
+                                <li><strong>1. června 2008</strong> — Vydání Nmap 4.65, které poprvé zahrnuje spustitelný instalátor pro Mac OS X. Nmap zdrojový balíček nyní váží 4 MB. Tento release obsahuje 41 NSE skriptů, 1 307 OS otisků a 4 706 podpisů pro detekci verzí.</li>
+                                <li><strong>18. srpna 2008</strong> — Nmap projekt úspěšně dokončuje čtvrtý Summer of Code, s nejvyšší úspěšností (šest z sedmi sponzorovaných studentů uspělo). Vylepšili Zenmap, Nmap Scripting Engine, detekci OS a Ncat, jak je popsáno na <a href="https://seclists.org/nmap-dev/2008/q4/193">seclists.org</a>.</li>
+                                <li><strong>8. září 2008</strong> — Vydání Nmap 4.75 s téměř 100 významnými vylepšeními oproti 4.68. Patří sem i Zenmap síťová topologie, která kreslí interaktivní diagram objevených síťových zařízení. Po 11 letech distribuce Nmap může nyní skutečně kreslit síťové mapy. Tato verze také obsahuje agregaci skenů, která umožňuje kombinovat několik skenů do jednoho sjednoceného zobrazení. Oboje je popsáno v kapitole 12, Uživatelská příručka pro Zenmap GUI.</li>
+                                <li><strong>4. října 2008</strong> — Spuštění Nmap Dokumentačního portálu na <a href="https://nmap.org/nsedoc/">nmap.org/nsedoc/</a>. Umožňuje uživatelům procházet veškerou dokumentaci NSE skriptů a knihoven Nmap na jednom místě.</li>
+                                <li><strong>1. ledna 2009</strong> — Vydání první verze této knihy, Nmap Network Scanning. Odpověď na otázku, zda by někdo jiný měl zájem o 450+ stránkovou knihu o skenování portů, je jednoznačné ano! Více než 10 000 kopií se prodalo v prvních 18 měsících. Byla také vydána v německém, korejském a brazilském portugalském jazyce.</li>
+                                <li><strong>23. ledna 2009</strong> — Přidán Ncat, výkonný nástroj pro síťovou komunikaci, který čte a zapisuje data přes síť z příkazového řádku. Je to reimplementace klasického nástroje Netcat s podporou moderních síťových funkcí, jako je SSL, přesměrování připojení a proxyování. Viz kapitola 17, Referenční příručka Ncat.</li>
+                                <li><strong>23. ledna 2009</strong> — Přidán nástroj Ndiff, který porovnává výsledky dvou Nmap skenů, což usnadňuje pravidelné skenování sítí a vytváření reportů (XML nebo text), které ukazují jakékoli změny. Viz kapitola 16, Referenční příručka Ndiff.</li>
+                                <li><strong>30. března 2009</strong> — Vytvoření speciální verze Nmap (4.85BETA5) pro vzdálené detekování červu Conficker, který infikoval miliony strojů na internetu. Poptávka je tak vysoká, že Nmap je vyhozen z Dreamhostova plánu "neomezeného pásma" kvůli příliš vysoké šířce pásma. Univerzita v Kalifornii v San Diegu poskytuje rychlý zrcadlový server.</li>
+                                <li><strong>12. června 2009</strong> — Přidána podpora pro SCTP port scanning a detekci hostů do Nmap. SCTP je protokol vrstvy 4 používaný převážně pro telekomunikační aplikace.</li>
+                                <li><strong>16. července 2009</strong> — Vydání Nmap 5.00. Tarball má více než 27 MB a obsahuje 2 003 OS otisků, 5 512 podpisů pro detekci verzí a 59 NSE skriptů.</li>
+                                <li><strong>24. srpna 2009</strong> — Nmap projekt dokončuje pátý Summer of Code. Poprvé každý student uspěl! Vytvořili Nping a nástroj pro autentizační útoky Ncrack a výrazně vylepšili Nmap Scripting Engine, Ncat a Zenmap.</li>
+                                <li><strong>29. března 2010</strong> — Přidán Nping, užitečný nástroj pro generování síťových paketů, analýzu odpovědí a měření doby reakce. Viz kapitola 18, Referenční příručka Nping.</li>
+                                <li><strong>28. července 2010</strong> — David Fifield a já představujeme Mastering the Nmap Scripting Engine na konferencích Black Hat a Defcon, včetně živých demo prezentací. (video: <a href="https://nmap.org/presentations/">nmap.org/presentations/</a>)</li>
+                                <li><strong>17. srpna 2010</strong> — Skenování největšího milionu webových stránek pro zábavu vedlo k vedlejšímu uměleckému projektu, když jsme vydali Icons of the Web, mozaiku ikon webových stránek podle jejich popularity. Bylo to publikováno v New York Times, The Telegraph, Slashdot, Gizmodo, Engadget a mnoha dalších. Obří verze byla vystavena v Newseum v Washingtonu D.C. a dokonce se objevila v Guinnessově knize rekordů.</li>
+                                <li><strong>28. ledna 2011</strong> — Vydání Nmap 5.50. Přidána podpora pro starodávný protokol Gopher pro zábavu, ale skutečné vylepšení zahrnovaly trojnásobný nárůst počtu NSE skriptů na 177 a přidání nového rozhraní pro výběr skriptů v Zenmapu. Také byla přidána nová funkce režimu echo v Npingu, která usnadňuje analýzu a ladění sítí. Výkon byl také prioritou, přičemž určité časy skenování byly zkráceny z hodin na minuty a spotřeba paměti snížena o 90 % v benchmarkovém skenu.</li>
+                                <li><strong>8. června 2011</strong> — Vytvoření komemorativní verze pro World IPv6 day s řadou nových funkcí pro IPv6, plus zajištění, že všechny naše weby budou podporovat IPv6. Nmap podporoval základní skenování IPv6 již od roku 2002, ale přidali jsme pokročilé detekce hostů a skenování portů. Také jsme brzy přidali nový systém detekce OS na základě strojového učení pro IPv6.</li>
+                                <li><strong>4. listopadu 2011</strong> — Po průzkumu více než 3 000 uživatelů Nmap ohledně jejich oblíbených bezpečnostních nástrojů jsme znovu spustili web SecTools.org s novými daty. Předchozí weby byly jen statické HTML soubory, ale tento nový release obsahuje interaktivní funkce pro hodnocení a recenze, které usnadňují sdílení informací. 49 z 125 nejlepších nástrojů uvedených na webu je nových.</li>
+                                <li><strong>21. května 2012</strong> — Vydání Nmap 6! Tarball je více než 54 MB a obsahuje 3 572 OS otisků, 8 165 podpisů pro detekci verzí a 348 NSE skriptů.</li>
+                            </ul>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+{% endblock %}
