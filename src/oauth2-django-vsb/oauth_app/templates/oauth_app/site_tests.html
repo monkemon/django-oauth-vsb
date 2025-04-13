@@ -1,4 +1,4 @@
-{% extends "../base/base.html" %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block title %} NMAP - Testy {% endblock %}
@@ -27,18 +27,18 @@
                                 </div></div>
                                 Ten má, kromě otevřených portů v daném rozsahu, zjistit i informace o operačním systému zařízení. V tomto případě užití bylo 8 zařízení neznámých (nebylo možno rozeznat operační systém), ale na základě služeb s otevřenými porty lze rozeznat o jaké zařízení se jedná.</p>
                         <figure class="figure col-md-6">
-                            <img src="{% static 'images/os_scan.png' %}" style="width:100%;">
+                            <img src="{% static 'oauth_app/images/os_scan.png' %}" style="width:100%;">
                             <figcaption class="figure-caption">Výsledek 1. skenu. Odpovědělo 12 zařízení, na snímku je vidět Mac OS a jeho otevřené porty.</figcaption>
                             </figure>
                             <p>2. navazující sken se zaměřuje na konkrétní zařízení (Mac OS z předchozího snímku).</p>
                             <figure class="figure col-md-6">
-                                <img src="{% static 'images/mac.png' %}" style="width:100%;">
+                                <img src="{% static 'oauth_app/images/mac.png' %}" style="width:100%;">
                                 <figcaption class="figure-caption">Výsledek 2. skenu ukazuje více informací o otevřených portech daného zařízení.</figcaption>
                                 </figure>
                                 <p>3. sken byl spuštěn s parametrem -A (agresivní), čímž se zvýšila šance na detekci skenu. Avšak nám bylo odhaleno více informací a to hlavně díky použití NSE skriptu zaměřený na SMB2, který nám odhalil 
                                     i konkrétní model počítače a verze služeb s otevřenými porty. Dále je možno spustit stejný příkaz s příkazem -d (debug), jak nám sám nmap radí.</p>
                                 <figure class="figure col-md-6">
-                                    <img src="{% static 'images/air.png' %}" style="width:100%;">
+                                    <img src="{% static 'oauth_app/images/air.png' %}" style="width:100%;">
                                     <figcaption class="figure-caption">Výsledek 3. skenu zjistil, že se jedná o zařízení Mac Book Air.</figcaption>
                                     </figure>
                                 <h4>2. Hledání web serveru a uložení do souboru</h4>
@@ -54,7 +54,7 @@
                                     </div>
                                   </div>
                                   <figure class="figure col-md-6">
-                                    <img src="{% static 'images/xml.png' %}" style="width:100%;">
+                                    <img src="{% static 'oauth_app/images/xml.png' %}" style="width:100%;">
                                     <figcaption class="figure-caption">192.168.0.1 odpovídá web serveru routeru (Default gateway).</figcaption>
                                     </figure>
                                     <h4>3. Trasování paketů</h4>
@@ -66,7 +66,7 @@
                                     <p>Zde můžete pozorovat první dva pakety SENT/RECD (odeslané/přijaté), které ukazují ARP požadavek od 192.168.1.105 na 192.168.1.103, a následně byly použity knihovny 
                                         NSOCK k určení aktuálních požadavků a odpovědí, které cestují mezi zdrojovým a cílovým routerem. </p>
                                     <figure class="figure col-md-6">
-                                        <img src="{% static 'images/7.png' %}" style="width:100%;">
+                                        <img src="{% static 'oauth_app/images/7.png' %}" style="width:100%;">
                                         <figcaption class="figure-caption">NMAP ARP sken hostu 192.168.1.103</figcaption>
                                         </figure>
                                         
@@ -77,7 +77,7 @@
                                               </div>
                                               <br>
                                             <figure class="figure col-md-6">
-                                                <img src="{% static 'images/8.png' %}" style="width:100%;">
+                                                <img src="{% static 'oauth_app/images/8.png' %}" style="width:100%;">
                                                 <figcaption class="figure-caption">Zde je vidět, že host odpověděl na ARP request.</figcaption>
                                                 </figure>
                                                 <p>Nmap ve výchozím nastavení, v tomto případě, odesílá ARP paket pro zjištění stavu hostitele.
@@ -89,7 +89,7 @@
                                                       </div>
                                                       <br>
                                                       <figure class="figure col-md-6">
-                                                        <img src="{% static 'images/9.png' %}" style="width:100%;">
+                                                        <img src="{% static 'oauth_app/images/9.png' %}" style="width:100%;">
                                                         <figcaption class="figure-caption">Zde je vidět TCP SYN (port 443) a TCP ACK (port 80).</figcaption>
                                                         </figure>
 

@@ -1,4 +1,4 @@
-{% extends "../base/base.html" %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block title %} NMAP - Ostatní nástroje {% endblock %}
@@ -48,11 +48,11 @@
                              Také umožňuje skeny exportovat do několika formátů (XML, HTML, CSV).  </p>
                     </div>
                     <figure class="figure col-md-9">
-                    <img src="{% static 'images/nessus_scan.png' %}" style="width:100%;">
+                    <img src="{% static 'oauth_app/images/nessus_scan.png' %}" style="width:100%;">
                     <figcaption class="figure-caption">Snímek výsledku skenu v rozhraní Nessusu s odhalením zranitelnosti.</figcaption>
                     </figure>
                     <figure class="figure col-md-9">
-                        <img src="{% static 'images/nessus_scan2.png' %}" style="width:100%;">
+                        <img src="{% static 'oauth_app/images/nessus_scan2.png' %}" style="width:100%;">
                         <figcaption class="figure-caption">Snímek výsledku skenu v rozhraní Nessusu s odhalením zranitelnosti.</figcaption>
                         </figure>
                 </div>
@@ -69,11 +69,11 @@
                         </p>
                     </div>
                     <figure class="figure col-md-6">
-                        <img src="{% static 'images/zenmap2.png' %}" style="width:100%;">
+                        <img src="{% static 'oauth_app/images/zenmap2.png' %}" style="width:100%;">
                         <figcaption class="figure-caption">Grafická reprezentace topologie sítě v Zenmapu.</figcaption>
                         </figure>
                     <figure class="figure col-md-6">
-                        <img src="{% static 'images/zenmap.png' %}" style="width:100%;">
+                        <img src="{% static 'oauth_app/images/zenmap.png' %}" style="width:100%;">
                         <figcaption class="figure-caption">GUI aplikace Zenmap.</figcaption>
                         </figure>
 
@@ -106,11 +106,11 @@
                         </p>
                     </div>
                     <figure class="figure col-md-6">
-                        <img src="{% static 'images/oriunicorn1.jpg' %}" style="width:100%;">
+                        <img src="{% static 'oauth_app/images/oriunicorn1.jpg' %}" style="width:100%;">
                         <figcaption class="figure-caption">Sken pomocí nástroje Unicorn.</figcaption>
                         </figure>
                         <figure class="figure col-md-6">
-                            <img src="{% static 'images/orinmap1.jpg' %}" style="width:100%;">
+                            <img src="{% static 'oauth_app/images/orinmap1.jpg' %}" style="width:100%;">
                             <figcaption class="figure-caption">Sken stejné sítě pomocí nástroje NMAP.</figcaption>
                             </figure>
 

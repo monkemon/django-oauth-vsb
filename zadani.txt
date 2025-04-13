@@ -1,0 +1,2 @@
+Demonstrační WWW stránka ve frameworku Django umožňující autentizaci pomocí OAUTH2
+přes Google API.
