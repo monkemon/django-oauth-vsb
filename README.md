@@ -13,7 +13,6 @@ Project for VSB
 - `$ python -m venv venv`
 - `source venv/bin/activate`
 - `pip install -r requirements.txt`
-- `cd /src/ouauth`
-- `export DJANGO_DEBUG=1`
+- `cd /src/oauth2-django-vsb`
 - `python manage.py runserver`
 - in browser, go to `localhost:8000` (the default django port)
