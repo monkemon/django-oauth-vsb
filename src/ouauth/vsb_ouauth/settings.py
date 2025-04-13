@@ -26,7 +26,12 @@ SECRET_KEY = 'django-insecure-j7-@y6epq6h&pet!a-4x52rn=s)k%o)hsiqq92v@_jgro*mn(%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "[::1]", 
+    "localhost", 
+    "127.0.0.1", 
+    "0.0.0.0", 
+]
 
 # passed from docker
 allowed_host_docker = getenv("DJANGO_HOST_URI")
