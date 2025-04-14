@@ -9,6 +9,7 @@ Project for VSB
 - `cd django-oauth`
 - `git clone https://github.com/monkemon/django-oauth-vsb.git`
 - `mv ./docker-compose.yml ./nginx ..`
+- `cd ..`
 - `docker compose up -d --build`
 - the app should run at localhost:8000
 - if necessary/or commented out, uncomment ports option in docker-compose.yml
