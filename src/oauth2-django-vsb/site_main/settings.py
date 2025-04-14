@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-cc_@9y4a!*8w!a17##3sn()$gl%p_6)=e!f7lnv@3$gc=o32)5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-debug_option = os.getenv("DJANGO_DEBUG")
+debug_option = getenv("DJANGO_DEBUG")
 if debug_option != None:
     DEBUG = debug_option == "1"
 
