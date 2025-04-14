@@ -35,3 +35,13 @@ services:
     networks:
       - ip6net
       - proxy
+
+networks:
+  ip6net:
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: 2001:db8::/64
+
+  proxy:
+    name: proxy
