@@ -1,6 +1,12 @@
 # django-oauth-vsb
 Project for VSB 
 
+# deployment
+- buy a domain
+- buy a hosting
+- from server, complete a DNS challenge from providers like Let'sEncrypt
+- run Traefik container on the server
+- you need both nginx and django-oauth services
 
 # running locally
 ### using docker compose
@@ -10,10 +16,10 @@ Project for VSB
 - `git clone https://github.com/monkemon/django-oauth-vsb.git`
 - `mv ./docker-compose.yml ./nginx ..`
 - `cd ..`
-- `docker compose up -d --build`
+- the `target` should be set to `debug` in docker-compose
+- port 8000 should be mapped to 9999 in docker-compose
+- `docker compose up --build django-oauth` // you don't need the nginx for this
 - the app should run at localhost:8000
-- if necessary/or commented out, uncomment ports option in docker-compose.yml
-
 
 
 ### using python locally

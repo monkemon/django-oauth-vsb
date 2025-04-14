@@ -1,4 +1,4 @@
-FROM python:3.11-alpine3.20 as base
+FROM python:3.11-alpine3.20 AS base
 
 RUN mkdir /app
 
@@ -19,14 +19,16 @@ RUN chmod +x entrypoint.sh
 
 
 
-FROM base as debug
+FROM base AS debug
+
+WORKDIR /app/src/oauth2-django-vsb
 
 ENTRYPOINT ["/usr/local/bin/python"]
-CMD ["./manage.py", "runserver", "0.0.0.0:9999"]
+CMD ["manage.py", "runserver", "0.0.0.0:9999"]
 
 
 
-FROM base as production
+FROM base AS production
 
 ENTRYPOINT ["/bin/sh"]
 CMD ["./entrypoint.sh"]
