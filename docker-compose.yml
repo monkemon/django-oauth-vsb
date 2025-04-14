@@ -5,17 +5,19 @@ services:
       context: "./django-oauth-vsb"
     volumes:
       - "./django-oauth-vsb:/app"
+    ports:
+      - "8000:9999" # comment for deployment
     networks:
       - ip6net
       - proxy
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.vsbdjango.rule=Host(`oauth2-vsbproject.imateapot418.tech`)"
-      - "traefik.http.services.vsbdjango.loadbalancer.server.port=9999"
     environment:
       - "DJANGO_OAUTH_HOST=oauth2-vsbproject.imateapot418.tech"
       - "GUNICORN_PORT=9999"
       - "DJANGO_DEBUG=1"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.vsbdjango.rule=Host(`oauth2-vsbproject.imateapot418.tech`)"
+      - "traefik.http.services.vsbdjango.loadbalancer.server.port=9999"
 
   nginx:
     container_name: "nginx"
