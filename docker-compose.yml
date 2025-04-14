@@ -3,10 +3,11 @@ services:
     container_name: "django_oauth_vsb"
     build:
       context: "./django-oauth-vsb"
+      target: debug
     volumes:
       - "./django-oauth-vsb:/app"
     ports:
-      - "8000:9999" # comment for deployment
+      - "8000:9999" # uncomment for debug
     networks:
       - ip6net
       - proxy
