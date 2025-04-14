@@ -1,7 +1,6 @@
 FROM python:3.11-alpine3.20
 
 RUN mkdir /app
-RUN mkdir /data
 
 WORKDIR /app
 
@@ -14,8 +13,11 @@ COPY requirements.txt /app
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY src/ouauth /app
+COPY . .
 
-EXPOSE 9999
+RUN chmod +x entrypoint.sh
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:9999"]
+ENTRYPOINT ["/bin/sh"]
+CMD ["./entrypoint.sh"]
+
+
