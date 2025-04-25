@@ -1,5 +1,8 @@
 from django.shortcuts import render
 
+def site_login(request):
+    return render(request, "oauth_app/site_login.html")
+
 def site_index(request):
     return render(request, "oauth_app/site_index.html")
 
