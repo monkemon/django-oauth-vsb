@@ -20,6 +20,6 @@ from django.urls import path, include
 from oauth_app import views
 
 urlpatterns = [
-    # path('admin/', admin.site.urls), # no need yet
+    path('admin/', admin.site.urls), # no need yet
     path("", include("oauth_app.urls")),
 ]
