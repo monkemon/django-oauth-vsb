@@ -1,5 +1,5 @@
 services:
-  django-oauth:
+  django:
     container_name: "django_oauth_vsb"
     build:
       context: "./django-oauth-vsb"
@@ -32,7 +32,7 @@ services:
       - "traefik.http.routers.nginx.rule=Host(`nginx.imateapot418.tech`) || (Host(`oauth2-vsbproject.imateapot418.tech`) && PathPrefix(`/static`))"
       - "traefik.http.services.nginx.loadbalancer.server.port=9998"
     depends_on:
-      - django-oauth
+      - django
     networks:
       - ip6net
       - proxy
