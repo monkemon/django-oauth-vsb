@@ -4,25 +4,49 @@ def site_login(request):
     return render(request, "oauth_app/site_login.html")
 
 def site_index(request):
-    return render(request, "oauth_app/site_index.html")
+    if request.user.is_authenticated:
+        return render(request, "oauth_app/site_index.html")
+    else:
+        return render(request, "oauth_app/site_login.html")
 
 def site_history(request):
-    return render(request, "oauth_app/site_history.html")
+    if request.user.is_authenticated:
+        return render(request, "oauth_app/site_history.html")
+    else:
+        return render(request, "oauth_app/site_login.html")
 
 def site_description(request):
-    return render(request, "oauth_app/site_description.html")
-
+    if request.user.is_authenticated:
+        return render(request, "oauth_app/site_description.html")
+    else:
+        return render(request, "oauth_app/site_login.html")
+    
 def site_tech_details(request):
-    return render(request, "oauth_app/site_details.html")
-
+    if request.user.is_authenticated:
+        return render(request, "oauth_app/site_details.html")
+    else:
+        return render(request, "oauth_app/site_login.html")
+    
 def site_tests(request):
-    return render(request, "oauth_app/site_tests.html")
-
+    if request.user.is_authenticated:
+        return render(request, "oauth_app/site_tests.html")
+    else:
+        return render(request, "oauth_app/site_login.html")
+    
 def site_results(request):
-    return render(request, "oauth_app/site_results.html")
-
+    if request.user.is_authenticated:
+        return render(request, "oauth_app/site_results.html")
+    else:
+        return render(request, "oauth_app/site_login.html")
+    
 def site_other_tools(request):
-    return render(request, "oauth_app/site_othertools.html")
-
+    if request.user.is_authenticated:
+        return render(request, "oauth_app/site_othertools.html")
+    else:
+        return render(request, "oauth_app/site_login.html")
+    
 def site_orchestration(request):
-    return render(request, "oauth_app/site_orchestration.html")
+    if request.user.is_authenticated:
+        return render(request, "oauth_app/site_orchestration.html")
+    else:
+        return render(request, "oauth_app/site_login.html")

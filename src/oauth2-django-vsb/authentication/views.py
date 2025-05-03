@@ -4,6 +4,9 @@ from django.shortcuts import render, redirect
 
 from urllib.parse import urlencode
 
+from django.contrib.auth import login, logout
+from authentication.models import CustomUser
+
 google_auth_endpoint = "https://accounts.google.com/o/oauth2/v2/auth"
 
 google_client_id = ""
@@ -72,4 +75,19 @@ def google_callback(request):
     request.session["user_email"] = user_info["email"]
     request.session["user_image"] = user_info["picture"]
 
-    return redirect("/home")
+    #----
+
+    username = request.session["user_email"]
+    picture = request.session["user_image"]
+    #password = request.POST['password']
+
+### Kdyz si uzivatel zmeni obrazek tak to bude delat bordel! protoze bude existovat zaznam s mailem a nebude unique potom... ale fakt se mi to nechce resit
+    user, created = CustomUser.objects.get_or_create(username=username, picture=picture, defaults={"email": username})
+
+    login(request, user)
+    return redirect('/home')
+
+ 
+def logout_view(request):
+    logout(request)
+    return redirect('/')
