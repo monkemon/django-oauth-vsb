@@ -50,7 +50,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'oauth_app.apps.OauthAppConfig',
+    'authentication'
 ]
+#this line overrides the default User by stating the path to the custom model, which is in the authentication app.
+AUTH_USER_MODEL = 'authentication.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
