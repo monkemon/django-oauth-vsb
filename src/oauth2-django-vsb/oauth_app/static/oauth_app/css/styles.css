@@ -24,13 +24,6 @@
 
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
-html,body{
-background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
-background-size: cover;
-background-repeat: no-repeat;
-height: 100%;
-font-family: 'Numans', sans-serif;
-}
 
 .container{
 height: 100%;
@@ -78,6 +71,9 @@ outline: 0 0 0 0  !important;
 box-shadow: 0 0 0 0 !important;
 
 }
+
+
+
 
 .remember{
 color: white;
@@ -203,6 +199,8 @@ body {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
+
 
 hr {
   margin: 1rem 0;
@@ -343,18 +341,24 @@ sub {
 sup {
   top: -0.5em;
 }
-
-a {
-  color: var(--bs-link-color);
-  text-decoration: underline;
-}
-a:hover {
-  color: var(--bs-link-hover-color);
-}
-
-a:not([href]):not([class]), a:not([href]):not([class]):hover {
-  color: inherit;
+a:link {
   text-decoration: none;
+  color: #FFC312;
+}
+
+a:visited {
+  text-decoration: none;
+  color: #FFC312;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #FFC312;
+}
+
+a:active {
+  text-decoration: none;
+  color: #FFC312;
 }
 
 pre,
