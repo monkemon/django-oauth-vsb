@@ -21,11 +21,17 @@ print(google_client_secret)
 
 state = "Kebab"
 
+redirect_uri = os.getenv("DJANGO_OAUTH_HOST")
+if not redirect_uri:
+    redirect_uri = "http://localhost:8000/auth/google/callback"
+else:
+    redirect_uri += "/auth/google/callback"
+
 def google_redirect(request):
 
     params = {
         "client_id": google_client_id,
-        "redirect_uri": "http://localhost:8000/auth/google/callback",
+        "redirect_uri": redirect_uri,
         "response_type": "code",
         "scope": "email",
         "state": state,
@@ -56,7 +62,7 @@ def google_callback(request):
         "client_secret": google_client_secret,
         "code": code,
         "grant_type": "authorization_code",
-        "redirect_uri": "http://localhost:8000/auth/google/callback"
+        "redirect_uri": redirect_uri,
     }
 
     res = requests.post(
