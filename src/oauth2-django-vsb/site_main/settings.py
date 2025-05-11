@@ -38,7 +38,7 @@ else:
     host = getenv("DJANGO_OAUTH_HOST")
     if not host:
         raise Exception("You must specify env `DJANGO_OAUTH_HOST` before deploying")
-    ALLOWED_HOSTS.append(host)
+    ALLOWED_HOSTS.append(host.replace("https://", ""))
 
 # Application definition
 
