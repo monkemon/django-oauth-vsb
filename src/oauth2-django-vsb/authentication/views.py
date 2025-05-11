@@ -1,4 +1,6 @@
 import requests
+import os
+import time
 
 from django.shortcuts import render, redirect
 
@@ -9,9 +11,13 @@ from authentication.models import CustomUser
 
 google_auth_endpoint = "https://accounts.google.com/o/oauth2/v2/auth"
 
-google_client_id = ""
-google_client_secret = ""
+# insert secrets here for debug or set in .env file if using docker
+google_client_id = os.getenv("GOOGLE_API_CLIENT_ID") or ""
+google_client_secret = os.getenv("GOOGLE_API_CLIENT_SECRET") or ""
 
+print("SECRETS")
+print(google_client_id)
+print(google_client_secret)
 
 state = "Kebab"
 
@@ -81,8 +87,18 @@ def google_callback(request):
     picture = request.session["user_image"]
     #password = request.POST['password']
 
-### Kdyz si uzivatel zmeni obrazek tak to bude delat bordel! protoze bude existovat zaznam s mailem a nebude unique potom... ale fakt se mi to nechce resit
-    user, created = CustomUser.objects.get_or_create(username=username, picture=picture, defaults={"email": username})
+    user, created = CustomUser.objects.get_or_create(
+        username=username,
+        defaults={
+            "username": username,
+            "email": username,
+            "picture": picture,
+        }
+    )
+
+    if not created and user.picture != picture:
+        user.picture = picture
+        user.save()
 
     login(request, user)
     return redirect('/home')

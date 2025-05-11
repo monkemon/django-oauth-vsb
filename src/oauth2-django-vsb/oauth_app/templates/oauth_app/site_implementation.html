@@ -147,8 +147,18 @@ username = request.session["user_email"]
 picture = request.session["user_image"]
 #password = request.POST['password']
 
-# Kontrola jestli uživatel již neexistuje... pokud ne, tak se vytvoří nový záznam v SQLite Databázi
-user, created = CustomUser.objects.get_or_create(username=username, picture=picture, defaults={"email": username})
+user, created = CustomUser.objects.get_or_create(
+        username=username,
+        defaults={
+            "username": username,
+            "email": username,
+            "picture": picture,
+        }
+    )
+
+    if not created and user.picture != picture:
+        user.picture = picture
+        user.save()
 
 # Přihlášení uživatele
 login(request, user)

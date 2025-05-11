@@ -15,6 +15,8 @@ services:
       - "DJANGO_OAUTH_HOST=oauth2-vsbproject.imateapot418.tech"
       - "GUNICORN_PORT=9999"
       - "DJANGO_DEBUG=1"
+      - "GOOGLE_API_CLIENT_ID=${GOOGLE_CLIENT_ID}"
+      - "GOOGLE_API_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.vsbdjango.rule=Host(`oauth2-vsbproject.imateapot418.tech`)"

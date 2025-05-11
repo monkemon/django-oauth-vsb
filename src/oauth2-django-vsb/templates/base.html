@@ -9,7 +9,7 @@
         <meta name="author" content="" />
         
         <title>{% block title %} OAuth home {% endblock %}</title>
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="{% static 'oauth_app/assets/favicon.jpg' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'oauth_app/css/styles.css' %}"/>
           <!-- Přidání Prism.js CSS pro stylování syntaxe -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" rel="stylesheet" />
@@ -23,13 +23,14 @@
           
             <div class="container px-4">
               <a href="/home"><img src="{% static 'oauth_app/images/nmap_logo.png' %}" class="img-fluid" alt="Responsive image" style="max-height: 50px; padding-right: 20px;"></a>
-                <a class="navbar-brand" href="#page-top">VPBK projekt - OAuth</a>
+                <a class="navbar-brand" href="/home">VPBK projekt - OAuth</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <!-- <li class="nav-item"><a class="nav-link {% if request.path == '/vsb_ouauth/details' %}active-page{% endif %}" href="details">Detaily</a></li> -->
                         <li class="nav-item"><a class="nav-link {% if request.path == '/vsb_ouauth/implementation' %}active-page{% endif %}" href="implementation">Implementace</a></li>
                         <li class="nav-item"><a class="nav-link {% if request.path == '/vsb_ouauth/googleCloud' %}active-page{% endif %}" href="googleCloud">Google Cloud API</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://github.com/monkemon/django-oauth-vsb">GitHub</a></li>
                         {% comment %} <li class="nav-item"><a class="nav-link {% if request.path == '/vsb_ouauth/history' %}active-page{% endif %}" href="history">Historie</a></li> {% endcomment %}
                     </ul>
                 </div>
