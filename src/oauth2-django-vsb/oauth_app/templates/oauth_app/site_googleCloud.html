@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} OAuth - Google Cloud Console {% endblock %}
+
+
+
+{% block content %}
+
+
+
+<div class="container pt-5">
+    <h1 class="pt-5">Google Cloud Console</h1>
+</div>
+
+
+
+<section class="aboutSection bg-light" id="about">
+    <div class="container px-6 w-100">
+        <div class="row gx-4 justify-content-center w-100">
+            <div class="col-md-8 w-100">
+                <div>Jedná se o webové rozhraní Google Cloud Console, kde lze spravovat různé služby, aplikace a API. V našem případě se jednalo právě o nastavení
+                    OAuth 2.0 a konfiguraci oprávnění pro web. UI je dostupné zde: <a href="https://console.cloud.google.com/">https://console.cloud.google.com/</a>. Pro přístup stačí mít zřízený Google účet.  </div><br>
+                        <figure class="figure col-md-8">
+                            <img src="{% static 'oauth_app/images/console.png' %}" style="width:100%;">
+                            <figcaption class="figure-caption">1. Hlavní Dashboard </figcaption>
+                            </figure>
+                            <figure class="figure col-md-3">
+                                <img src="{% static 'oauth_app/images/panel.png' %}" style="width:65%;">
+                                <figcaption class="figure-caption">2. Výběrové menu </figcaption>
+                                </figure>
+                <h2>Metriky</h2>
+                <div>Webové rozhraní umožňuje sledování metrik.</div>
+                <figure class="figure col-md-8">
+                    <img src="{% static 'oauth_app/images/metrics.png' %}" style="width:100%;">
+                    <figcaption class="figure-caption">3. snímek metrik </figcaption>
+                    </figure>
+                    <h2>Nastavení OAuth</h2>
+                    <div>Tento view mimo počátečního nastavení, které již bylo popsáno na straně Implementace, je nejdůležitější. 
+                        (Client secret je očividně citlivý údaj a neměl by být nikde zveřejňován.)</div>
+                    <figure class="figure col-md-8">
+                        <img src="{% static 'oauth_app/images/clients.png' %}" style="width:100%;">
+                        <figcaption class="figure-caption">3. Nastavení klienta </figcaption>
+                        </figure>
+                        <h2>Testovací e-maily, publikace</h2>
+                        <div>V poslední řadě je zde ukázána záložka "Audience", kde byli zadáni testovací uživatelé a kde je možné odkliknout "Publish" tlačítko, které zpřístupní autentifikaci pro všechny uživatele.</div>
+                        <figure class="figure col-md-8">
+                            <img src="{% static 'oauth_app/images/tests.png' %}" style="width:100%;">
+                            <figcaption class="figure-caption">4. snímek záložky Audience </figcaption>
+                            </figure>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

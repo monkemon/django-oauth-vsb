@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} OAuth - Implementace {% endblock %}
+
+{% block content %}
+
+
+
+<div class="container pt-5">
+    <h1  style="margin-top: 50px;">Postup vyhotovení</h1>
+    <p class="lead">Postup implementace OAuth do tohoto Django projektu.</p>
+    
+  </div>
+        <section class="aboutSection bg-light" id="about">
+            <div class="container px-6 w-100">
+                <div class="row gx-4 justify-content-center w-100">
+                    <div class="col-md-8 w-100">
+
+                        <h2>Postup samotné autentizace</h2>
+                        <ol>
+                            <li>Uživatel je přesměrován na autorizační server (v případě tohoto projektu: Google API) pro udělení oprávnění přístupu k tomuto webu.</li>
+                            <li>Po úspěšném přihlášení a schválení oprávnění autorizační server vrátí autorizační kód (redirect URI).</li>
+                            <li>Web server pošle autorizační kód zpět na autorizační server spolu s klientským ID a tajným klíčem.</li>
+                            <li>Server ověří údaje a vrátí webu access token (a případně refresh token).</li>
+                            <li>Web pomocí access tokenu přistupuje k chráněným zdrojům uživatele (Různá API pro přístup k datům uživatele. V případě tohoto projektu je to e-mail a profilový obrázek. Dále to však může být datum narození, 
+                                data z uložiště Google Cloud, atd...).</li>
+                        </ol>
+                        <p><em>Přístup k citlivějším datům musí sám Google vlastníkovi aplikace schválit.</em></p>
+                        <figure class="figure col-md-6">
+                            <img src="{% static 'oauth_app/images/scopes.png' %}" style="width:100%;">
+                            <figcaption class="figure-caption">1. Seznam API připravených k použití. </figcaption>
+                            </figure>
+
+                      
+
+                        <h2>Kroky potřebné ke spuštění vlastní OAuth</h2>
+                        <p>Tato sekce se pokusí stručně vylíčit kroky potřebné k úspěšnému spuštění OAuth autentizace, které byly také podniknuty v rámci tohoto projektu.</p>
+                        <ol>
+                            <li>Vytvořit projekt v Google Cloud Console (je třeba mít google účet). [více zde: <a href="/googleCloud">Google Cloud API</a>]</li>
+                            <li>Zavést v projektu Google Auth Platform (OAuth consent screen). To obnáší: </li>
+                                <ul>
+                                    <li>Vložení developer e-mailu.</li>
+                                    <li>Zadání jména aplikace/webu.</li>
+                                    <li>Poskytnutí domény. (aby Google věděl že požadavek na autentizaci jde z legitimního webu/aplikace)</li>
+                                    <li>Nastavit Scopes. (Co za data poté bude mít aplikace/web k dispozici)</li>
+                                    <li>Přidat authorized Javascript origins (Př.: Projekt běžící na localhostu "http://localhost:8000")</li>
+                                    <li>Přidat authorized Redirect URI (adresa kam Google může přesměrovat uživatele po úspěšné autentifikaci: Př.: Projekt běžící na localhostu "http://localhost:8000/auth/google/callback")</li>
+
+
+
+                                </ul>
+                            <li>Implementace na straně web serveru.</li>
+                        </ol>
+
+                        <h2>Implementace na straně web serveru</h2>
+                        <ol>
+                            <li>Přesměrování uživatele na Google endpoint. (Pro ověření je třeba také client ID, které je zjistitelné z Google Cloud Console)</li>
+                            <div class="card my-3 w-100">
+                                <div class="card-header">
+                                  Funkce je volána přímo po stisku "Google tlačítka" na naši Login stránce.
+                                </div>
+                                <div class="card-body">
+                                  <pre><code class="language-python">
+google_auth_endpoint = "https://accounts.google.com/o/oauth2/v2/auth"
+
+#!!! google_cleint_id je citlivý údaj který by se neměl ani commitovat !!! 
+# Sám GitHub nám zamítl publikování. 
+google_client_id = "947522629936-n6c6ic6fkej9mnho2i2hm1jg5fcu4us4.apps.googleusercontent.com"
+
+def google_redirect(request):
+    params = {
+        "client_id": google_client_id,
+        "redirect_uri": "http://localhost:8000/auth/google/callback",
+        "response_type": "code",
+        "scope": "email",
+        "state": state,
+        "access_type": "offline",
+    }
+    return redirect(f"{google_auth_endpoint}?{urlencode(params)}")
+                                    </code></pre>
+                                    </div>
+                                </div>
+
+
+
+                                <li>Zpracování přesměrování z google autentizace.</li>
+                                <div class="card my-3 w-100">
+                                    <div class="card-header">
+                                      Komentáře v Snippetu.
+                                    </div>
+                                    <div class="card-body">
+                                    <pre><code class="language-python">
+def google_callback(request):
+
+#Příprava parametrů pro RestAPI
+data = {
+    "GET": request.GET,
+    "POST": request.POST,
+}
+
+data = data[request.method]
+
+if data["state"] != state:
+    return redirect("/login")
+
+code = data["code"]
+scope = data["scope"]
+
+# Složení parametrů vychází z dokumentace. Client id a client secret jsou vyžadovány.
+data = {
+    "client_id": google_client_id,
+    "client_secret": google_client_secret,
+    "code": code,
+    "grant_type": "authorization_code",
+    "redirect_uri": "http://localhost:8000/auth/google/callback"
+}
+# Uskutečnění požadavku 
+res = requests.post(
+    "https://oauth2.googleapis.com/token",
+    data=data
+)
+# should be JSON - according to Docs
+res = res.json()
+
+# Obdržení tokenu
+token = res.get("access_token", None)
+if not token:
+    return redirect("/login")
+
+# Vrácení tokenu
+user_info = requests.get(
+    "https://www.googleapis.com/oauth2/v3/userinfo",
+    headers={
+        "Authorization": f"Bearer {token}"
+    }
+)
+# user_info obsahuje informace o uživateli poskytnuté v RestAPI response
+user_info = user_info.json()
+
+request.session["user_email"] = user_info["email"]
+request.session["user_image"] = user_info["picture"]
+
+#----
+
+username = request.session["user_email"]
+picture = request.session["user_image"]
+#password = request.POST['password']
+
+# Kontrola jestli uživatel již neexistuje... pokud ne, tak se vytvoří nový záznam v SQLite Databázi
+user, created = CustomUser.objects.get_or_create(username=username, picture=picture, defaults={"email": username})
+
+# Přihlášení uživatele
+login(request, user)
+
+# Přesměrování na homepage
+return redirect('/home')
+                                    
+                                        </code></pre>
+                                        </div>
+                                    </div>
+
+                                <li>Testování (Google Auth platforma je z prvu v testovacím režimu. Tehdy autentifikací projdou jen manuálně vložené e-mailové adresy)</li>
+                                <li>Publikace (Více v sekci Google Cloud API)</li>
+                        </ol>
+
+
+ 
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock %}
